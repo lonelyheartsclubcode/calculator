@@ -1,32 +1,32 @@
 function add(a,b) {
-  console.log(a + b);
+  return parseFloat(a) + parseFloat(b);
 };
 
 function subtract(a,b) {
-  console.log(a + -b);
+  return parseFloat(a) + parseFloat(-b);
 };
 
 function multiply(a,b) {
-  console.log(a * b);
+  return parseFloat(a) * parseFloat(b);
 };
 
 function divide(a,b) {
-  if (b === 0) {
-    console.log("That's not allowed!");
+  if (b == 0) {
+    alert("That's not allowed!");
   } else {
-    console.log(a / b);
+    return parseFloat(a) / parseFloat(b);
   }
 };
 
 function operate(operator, firstNumber, secondNumber) {
-  if (operator === '+') {
-    add(firstNumber, secondNumber);
-  } else if (operator === '-') {
-    subtract(firstNumber, secondNumber);
-  } else if (operator === '*') {
-    multiply(firstNumber, secondNumber);
-  } else if (operator === '/') {
-    divide(firstNumber, secondNumber);
+  if (operator == '+') {
+    return add(firstNumber, secondNumber);
+  } else if (operator == '-') {
+    return subtract(firstNumber, secondNumber);
+  } else if (operator == 'x') {
+    return multiply(firstNumber, secondNumber);
+  } else if (operator == '/') {
+    return divide(firstNumber, secondNumber);
   } else {
     console.log('ERROR');
   }
@@ -34,7 +34,9 @@ function operate(operator, firstNumber, secondNumber) {
 
 const display = document.querySelector('.display');
 const inputs = document.querySelector('.inputs');
-const results = document.querySelector('.results');
+const results = document.querySelector('.result');
+const equals = document.querySelector('.equals');
+const clear = document.querySelector('.clear');
 
 const firstOperand = document.querySelector('.firstOperand');
 const operator = document.querySelector('.operator');
@@ -75,3 +77,21 @@ function updateOperator(value) {
   }
 };
 
+equals.addEventListener('click', () => {
+  if (operator.textContent != ''  && firstOperand.textContent != '' && secondOperand.textContent != '') {
+    let answer = operate(operator.textContent, firstOperand.textContent, secondOperand.textContent);
+    results.textContent = answer;
+    firstOperand.textContent = '';
+    secondOperand.textContent = '';
+    operator.textContent = '';
+  } else {
+    console.log('How about you try with some actual numbers, mate?');
+  }
+});
+
+clear.addEventListener('click', () => {
+    results.textContent = '';
+    firstOperand.textContent = '';
+    secondOperand.textContent = '';
+    operator.textContent = '';
+});
