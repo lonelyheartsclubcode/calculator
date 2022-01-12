@@ -66,7 +66,7 @@ function updateOperator(value) {
   if (firstOperand.textContent != '' && secondOperand.textContent == '') {
     operator.textContent = value;
   } else if (firstOperand.textContent != '' && secondOperand.textContent != '') {
-      let continueCalculation = operate(operator.textContent, firstOperand.textContent, secondOperand.textContent);
+      let continueCalculation = roundFiveDigits(operate(operator.textContent, firstOperand.textContent, secondOperand.textContent));
       firstOperand.textContent = continueCalculation;
       results.textContent = continueCalculation;
       operator.textContent = value;
@@ -79,7 +79,7 @@ function updateOperator(value) {
 
 equals.addEventListener('click', () => {
   if (operator.textContent != ''  && firstOperand.textContent != '' && secondOperand.textContent != '') {
-    let answer = operate(operator.textContent, firstOperand.textContent, secondOperand.textContent);
+    let answer = roundFiveDigits(operate(operator.textContent, firstOperand.textContent, secondOperand.textContent));
     results.textContent = answer;
     firstOperand.textContent = '';
     secondOperand.textContent = '';
@@ -95,3 +95,8 @@ clear.addEventListener('click', () => {
     secondOperand.textContent = '';
     operator.textContent = '';
 });
+
+function roundFiveDigits(input) {
+  let scaledInput = Math.round(input*100000);
+  return scaledInput/100000;
+}
