@@ -68,7 +68,7 @@ function updateOperator(value) {
   } else if (firstOperand.textContent != '' && secondOperand.textContent != '') {
       let continueCalculation = roundFiveDigits(operate(operator.textContent, firstOperand.textContent, secondOperand.textContent));
       firstOperand.textContent = continueCalculation;
-      results.textContent = continueCalculation;
+      results.textContent = '';
       operator.textContent = value;
       secondOperand.textContent = '';
   } else if (firstOperand.textContent == '' && results.textContent != '') {
