@@ -23,9 +23,9 @@ function operate(operator, firstNumber, secondNumber) {
     return add(firstNumber, secondNumber);
   } else if (operator == '-') {
     return subtract(firstNumber, secondNumber);
-  } else if (operator == 'x') {
+  } else if (operator == '×') {
     return multiply(firstNumber, secondNumber);
-  } else if (operator == '/') {
+  } else if (operator == '÷') {
     return divide(firstNumber, secondNumber);
   } else {
     console.log('ERROR');
